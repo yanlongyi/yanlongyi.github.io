@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Longyi Yan — Rubika exchange projects in 3D environments, concept art, character and prop design."><title>Rubika — Longyi Yan</title>
+<style>
+:root{--paper:#eeece6;--ink:#22231f;--line:#c6c5bc;--muted:#61635a;--gutter:clamp(22px,5vw,88px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}a:focus-visible,button:focus-visible{outline:3px solid #cf5739;outline-offset:5px}::selection{background:#cf5739;color:white}.skip{position:absolute;top:-100px;left:20px;padding:12px;background:white;z-index:10}.skip:focus{top:20px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:30px var(--gutter)}.wordmark{font-size:13px;font-weight:700;letter-spacing:.07em;white-space:nowrap}nav{display:flex;gap:clamp(16px,2.5vw,38px);font-size:12px}nav a{padding-block:6px;border-bottom:1px solid transparent}nav a:hover,nav a[aria-current=page]{border-bottom-color:currentColor}main{padding:0 var(--gutter)}
+.page-hero{padding:95px 0 48px;border-bottom:1px solid var(--ink)}.eyebrow{margin:0 0 28px;font-size:11px;letter-spacing:.14em;text-transform:uppercase}h1{margin:0 0 26px -.055em;font-size:clamp(72px,13.4vw,230px);line-height:.9;font-weight:400;letter-spacing:-.075em}.subtitle{margin:0;font-size:clamp(17px,2.1vw,30px);letter-spacing:-.02em}.hero-bottom{margin-top:48px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px}.intro{max-width:530px;margin:0;color:var(--muted);font-size:14px;line-height:1.85}.edition{font-size:10px;letter-spacing:.06em;white-space:nowrap}.gallery-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:28px 0}.gallery-heading h2{font-size:11px;font-weight:400;letter-spacing:.09em;text-transform:uppercase;margin:0}.gallery-heading p{font-size:11px;color:var(--muted);margin:0}
+/* 小图索引：帮助快速选择作品。主展区始终完整展示原始比例。 */
+.plate-index{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0 0 72px}.plate-index a{display:block}.plate-index img{display:block;width:100%;height:auto;opacity:.75;transition:opacity .2s,transform .2s}.plate-index a:hover img{opacity:1;transform:translateY(-3px)}.plate-index span{display:block;margin-top:9px;font-size:10px;color:var(--muted)}
+.plate{margin:0 0 72px;scroll-margin-top:30px}.plate-top{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:20px}.plate-title{display:flex;align-items:baseline;gap:24px}.plate-number{font-size:10px;color:var(--muted)}h3{margin:0;font-size:clamp(23px,2.6vw,40px);font-weight:400;line-height:1.1;letter-spacing:-.04em}.plate-type{font-size:10px;color:var(--muted);text-align:right}.plate-open{display:block;width:100%;padding:0;border:0;background:white;cursor:zoom-in;position:relative}.plate-open img{display:block;width:100%;height:auto}.expand{position:absolute;right:14px;bottom:14px;display:grid;place-items:center;width:34px;height:34px;background:rgba(238,236,230,.94);color:var(--ink);font-size:18px;opacity:0;transition:opacity .2s}.plate-open:hover .expand,.plate-open:focus-visible .expand{opacity:1}.plate figcaption{display:flex;justify-content:space-between;gap:24px;padding:15px 0 20px;border-bottom:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.6}.plate figcaption span:first-child{max-width:650px}.plate figcaption span:last-child{white-space:nowrap}
+.next-project{display:flex;justify-content:space-between;align-items:center;gap:28px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:36px 0}.next-project small{display:block;font-size:10px;letter-spacing:.08em;margin-bottom:16px;color:var(--muted)}.next-project strong{font-weight:400;font-size:clamp(30px,4vw,60px);letter-spacing:-.05em}.next-project .arrow{font-size:40px;transition:transform .2s}.next-project:hover .arrow{transform:translate(4px,-4px)}footer{padding:46px var(--gutter) 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;font-size:11px}.footer-name{display:block;font-size:18px;letter-spacing:-.04em;margin-bottom:10px}.footer-right{display:flex;gap:28px;align-items:center}.footer-right a{border-bottom:1px solid var(--line);padding-bottom:3px}
+/* 原生 dialog：Esc 关闭，方向键切换，放大后可滚动查看细节。 */
+.viewer{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:var(--paper);color:var(--ink)}.viewer::backdrop{background:#222c}.viewer[open]{display:flex;flex-direction:column}.viewer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 24px;border-bottom:1px solid var(--line);flex-shrink:0}.viewer-label{margin:0;font-size:12px}.viewer-tools{display:flex;gap:10px}.viewer button{background:transparent;border:1px solid var(--line);padding:10px 14px;cursor:pointer;font-size:12px}.viewer button:hover{background:#dedcd4}.viewer-stage{flex:1;min-height:0;overflow:auto;display:flex;align-items:center;justify-content:center;padding:24px}.viewer-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}.viewer-stage.is-zoomed{display:block}.viewer-stage.is-zoomed img{max-width:none;max-height:none;width:2048px;height:auto}.viewer-bottom{padding:14px 24px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-shrink:0}.viewer-count{font-size:11px;color:var(--muted)}body.viewer-open{overflow:hidden}
+@media(min-width:1800px){main{max-width:1800px;margin:auto}}
+@media(max-width:760px){.topbar{align-items:flex-start;flex-direction:column;gap:22px;padding-top:24px}nav{gap:22px;flex-wrap:wrap;font-size:11px}.page-hero{padding-top:65px;padding-bottom:32px}h1{font-size:clamp(64px,16vw,115px)}.hero-bottom{align-items:flex-start;flex-direction:column;gap:24px;margin-top:32px}.plate-index{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 12px;margin-bottom:48px}.plate{margin-bottom:44px}.plate-top{gap:12px}.plate-title{gap:12px}.plate-type{max-width:100px;line-height:1.6}.plate figcaption{font-size:10px;gap:12px}.expand{opacity:1;width:28px;height:28px;right:8px;bottom:8px}.gallery-heading p{font-size:10px}.viewer-bar{align-items:flex-start;padding:16px;gap:12px}.viewer-label{font-size:11px;line-height:1.6}.viewer-tools{gap:6px}.viewer button{padding:10px;font-size:11px}.viewer-stage{padding:12px}.viewer-bottom{padding:12px 16px}footer{align-items:flex-start;flex-direction:column;padding-top:30px}.footer-right{width:100%;justify-content:space-between}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before{transition:none!important}}
+
+.chapter-nav{display:flex;flex-wrap:wrap;gap:14px 28px;padding:26px 0;border-bottom:1px solid var(--line);font-size:11px;color:var(--muted)}
+.chapter-nav a:hover{text-decoration:underline;text-underline-offset:4px;color:var(--ink)}
+.collection-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin:0 0 40px;padding:25px 0;border-top:1px solid var(--ink)}
+.collection-heading h3{font-size:clamp(27px,3.4vw,52px);max-width:850px}.collection-heading p{margin:0;font-size:10px;letter-spacing:.06em;color:var(--muted);text-align:right;line-height:1.6}
+@media(max-width:760px){.collection-heading{align-items:flex-start;flex-direction:column;gap:15px;margin-bottom:28px}.collection-heading p{text-align:left}.chapter-nav{gap:14px 22px}}
+</style></head><body><a class="skip" href="#gallery">Skip to portfolio</a><header class="topbar" id="top"><a class="wordmark" href="index.html">LONGYI YAN</a><nav aria-label="Main navigation"><a href="index.html#selected-work">Work</a><a href="fineart.html">Fine Art</a><a href="rubika.html" aria-current="page">Rubika</a><a href="suichu.html">Sui Chu</a><a href="cv.html">CV</a></nav></header><main><div class="page-hero"><p class="eyebrow">Exchange programme / Valenciennes, France</p><h1>Rubika</h1><p class="subtitle">Imagining other worlds.</p><div class="hero-bottom"><p class="intro">Selected work from my exchange in 3D Animation at Rubika. From atmospheric interiors and Viking architecture to imagined creatures and character concepts, these projects explore the journey from visual research to constructed worlds.</p><span class="edition">2024.09 — 2025.02 / 16 SPREADS</span></div></div><div class="chapter-nav" role="navigation" aria-label="Project chapters"><a href="#environments">01 / Environments &amp; Colour</a><a href="#viking">02 / Viking Town Building</a><a href="#worlds">03 / Worlds &amp; Creatures</a><a href="#characters">04 / Characters &amp; Objects</a></div>
+<section id="gallery" aria-labelledby="gallery-title"><div class="gallery-heading"><h2 id="gallery-title">The collection / 16 spreads</h2><p>Click a spread to explore the details ↗</p></div><div class="plate-index" role="navigation" aria-label="Portfolio spread index"><a href="#plate-01"><img src="assets/images/rubika-12.jpg" width="2048" height="724" loading="lazy" alt=""><span>01 / Tavern — Final Views</span></a><a href="#plate-02"><img src="assets/images/rubika-13.jpg" width="2048" height="724" loading="lazy" alt=""><span>02 / Tavern — Process &amp; Lighting</span></a><a href="#plate-03"><img src="assets/images/rubika-14.jpg" width="2048" height="724" loading="lazy" alt=""><span>03 / Colour &amp; Atmosphere</span></a><a href="#plate-04"><img src="assets/images/rubika-15.jpg" width="2048" height="724" loading="lazy" alt=""><span>04 / Viking Town — The Story</span></a><a href="#plate-05"><img src="assets/images/rubika-16.jpg" width="2048" height="724" loading="lazy" alt=""><span>05 / Research &amp; Silhouettes</span></a><a href="#plate-06"><img src="assets/images/rubika-17.jpg" width="2048" height="724" loading="lazy" alt=""><span>06 / From Silhouette to Structure</span></a><a href="#plate-07"><img src="assets/images/rubika-18.jpg" width="2048" height="724" loading="lazy" alt=""><span>07 / Building the Environment</span></a><a href="#plate-08"><img src="assets/images/rubika-19.jpg" width="2048" height="724" loading="lazy" alt=""><span>08 / Final Render &amp; New References</span></a><a href="#plate-09"><img src="assets/images/rubika-20.jpg" width="2048" height="724" loading="lazy" alt=""><span>09 / The World Tree</span></a><a href="#plate-10"><img src="assets/images/rubika-21.jpg" width="2048" height="724" loading="lazy" alt=""><span>10 / Creature Studies</span></a><a href="#plate-11"><img src="assets/images/rubika-22.jpg" width="2048" height="724" loading="lazy" alt=""><span>11 / An Astral Witch — Inspiration</span></a><a href="#plate-12"><img src="assets/images/rubika-23.jpg" width="2048" height="724" loading="lazy" alt=""><span>12 / Character &amp; Story Exploration</span></a><a href="#plate-13"><img src="assets/images/rubika-24.jpg" width="2048" height="724" loading="lazy" alt=""><span>13 / An Astral Witch — Character Sheet</span></a><a href="#plate-14"><img src="assets/images/rubika-25.jpg" width="2048" height="724" loading="lazy" alt=""><span>14 / Lyra — Research &amp; Form</span></a><a href="#plate-15"><img src="assets/images/rubika-26.jpg" width="2048" height="724" loading="lazy" alt=""><span>15 / Lyra — Object Design</span></a><a href="#plate-16"><img src="assets/images/rubika-27.jpg" width="2048" height="724" loading="lazy" alt=""><span>16 / Cupid &amp; Apollo</span></a></div><section class="collection" id="environments" aria-labelledby="environments-title"><div class="collection-heading"><h3 id="environments-title">01 / Environments &amp; Colour</h3><p>TAVERN / VISUAL DEVELOPMENT</p></div>
+<!-- 图片 01：申博-作品集2025_12.jpg → assets/images/rubika-12.jpg -->
+<figure class="plate" id="plate-01">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">01 /</span><h3>Tavern — Final Views</h3></div><span class="plate-type">3D environment</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Tavern — Final Views"><img src="assets/images/rubika-12.jpg" width="2048" height="724" loading="lazy" alt="A detailed 3D tavern interior with timber structures, furniture and warm lighting."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>A tavern interior presented through an atmospheric 3D scene and a selection of closer views.</span><span>LONGYI YAN / 01</span></figcaption>
+</figure>
+<!-- 图片 02：申博-作品集2025_13.jpg → assets/images/rubika-13.jpg -->
+<figure class="plate" id="plate-02">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">02 /</span><h3>Tavern — Process &amp; Lighting</h3></div><span class="plate-type">Modelling / Lighting</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Tavern — Process &amp; Lighting"><img src="assets/images/rubika-13.jpg" width="2048" height="724" loading="lazy" alt="Tavern scene assets and modelling studies alongside four lighting variations."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>From models and construction studies to variations in light, colour and mood.</span><span>LONGYI YAN / 02</span></figcaption>
+</figure>
+<!-- 图片 03：申博-作品集2025_14.jpg → assets/images/rubika-14.jpg -->
+<figure class="plate" id="plate-03">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">03 /</span><h3>Colour &amp; Atmosphere</h3></div><span class="plate-type">Colour studies</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Colour &amp; Atmosphere"><img src="assets/images/rubika-14.jpg" width="2048" height="724" loading="lazy" alt="Colour studies of a town square and architectural interiors in contrasting palettes."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Exploring how colour changes the character and atmosphere of an imagined place.</span><span>LONGYI YAN / 03</span></figcaption>
+</figure>
+</section>
+<section class="collection" id="viking" aria-labelledby="viking-title"><div class="collection-heading"><h3 id="viking-title">02 / Viking Town Building</h3><p>RESEARCH / ARCHITECTURE / 3D</p></div>
+<!-- 图片 04：申博-作品集2025_15.jpg → assets/images/rubika-15.jpg -->
+<figure class="plate" id="plate-04">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">04 /</span><h3>Viking Town — The Story</h3></div><span class="plate-type">Narrative / Worldbuilding</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Viking Town — The Story"><img src="assets/images/rubika-15.jpg" width="2048" height="724" loading="lazy" alt="Viking Town Building, Hel’s Children project title and story on a dark brown spread."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>A narrative starting point for Viking Town Building: Hel’s Children.</span><span>LONGYI YAN / 04</span></figcaption>
+</figure>
+<!-- 图片 05：申博-作品集2025_16.jpg → assets/images/rubika-16.jpg -->
+<figure class="plate" id="plate-05">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">05 /</span><h3>Research &amp; Silhouettes</h3></div><span class="plate-type">Visual research</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Research &amp; Silhouettes"><img src="assets/images/rubika-16.jpg" width="2048" height="724" loading="lazy" alt="Architectural reference boards and multiple white building silhouettes on a brown background."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Reference gathering and silhouette exploration establish the architectural language.</span><span>LONGYI YAN / 05</span></figcaption>
+</figure>
+<!-- 图片 06：申博-作品集2025_17.jpg → assets/images/rubika-17.jpg -->
+<figure class="plate" id="plate-06">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">06 /</span><h3>From Silhouette to Structure</h3></div><span class="plate-type">Design development</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge From Silhouette to Structure"><img src="assets/images/rubika-17.jpg" width="2048" height="724" loading="lazy" alt="Architectural iterations showing towers, roof profiles and front and side elevations."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Testing scale, proportion and architectural form through successive design variations.</span><span>LONGYI YAN / 06</span></figcaption>
+</figure>
+<!-- 图片 07：申博-作品集2025_18.jpg → assets/images/rubika-18.jpg -->
+<figure class="plate" id="plate-07">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">07 /</span><h3>Building the Environment</h3></div><span class="plate-type">3D blockout / Assembly</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Building the Environment"><img src="assets/images/rubika-18.jpg" width="2048" height="724" loading="lazy" alt="Colour blockouts of a Viking building and a three-dimensional environment assembly."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Moving from architectural ideas into spatial blockouts and a constructed 3D environment.</span><span>LONGYI YAN / 07</span></figcaption>
+</figure>
+<!-- 图片 08：申博-作品集2025_19.jpg → assets/images/rubika-19.jpg -->
+<figure class="plate" id="plate-08">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">08 /</span><h3>Final Render &amp; New References</h3></div><span class="plate-type">Environment / Research</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Final Render &amp; New References"><img src="assets/images/rubika-19.jpg" width="2048" height="724" loading="lazy" alt="Final Viking building render on the left and a world-tree reference board on the right."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>A rendered architectural scene, followed by visual research into the world tree.</span><span>LONGYI YAN / 08</span></figcaption>
+</figure>
+</section>
+<section class="collection" id="worlds" aria-labelledby="worlds-title"><div class="collection-heading"><h3 id="worlds-title">03 / Worlds &amp; Creatures</h3><p>SILHOUETTES / FORM / IMAGINATION</p></div>
+<!-- 图片 09：申博-作品集2025_20.jpg → assets/images/rubika-20.jpg -->
+<figure class="plate" id="plate-09">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">09 /</span><h3>The World Tree</h3></div><span class="plate-type">Silhouettes / 3D design</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge The World Tree"><img src="assets/images/rubika-20.jpg" width="2048" height="724" loading="lazy" alt="Black tree silhouettes beside a colourful rendered fantasy world tree."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>An imagined tree takes shape through silhouette studies and a richly coloured 3D interpretation.</span><span>LONGYI YAN / 09</span></figcaption>
+</figure>
+<!-- 图片 10：申博-作品集2025_21.jpg → assets/images/rubika-21.jpg -->
+<figure class="plate" id="plate-10">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">10 /</span><h3>Creature Studies</h3></div><span class="plate-type">Research / Shape language</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Creature Studies"><img src="assets/images/rubika-21.jpg" width="2048" height="724" loading="lazy" alt="Animal reference images, sketches and creature silhouettes across a design-development spread."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Reference, anatomy and silhouette experiments explore the possibilities of imagined creatures.</span><span>LONGYI YAN / 10</span></figcaption>
+</figure>
+</section>
+<section class="collection" id="characters" aria-labelledby="characters-title"><div class="collection-heading"><h3 id="characters-title">04 / Characters &amp; Objects</h3><p>INSPIRATION / NARRATIVE / DESIGN</p></div>
+<!-- 图片 11：申博-作品集2025_22.jpg → assets/images/rubika-22.jpg -->
+<figure class="plate" id="plate-11">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">11 /</span><h3>An Astral Witch — Inspiration</h3></div><span class="plate-type">Character / Moodboard</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge An Astral Witch — Inspiration"><img src="assets/images/rubika-22.jpg" width="2048" height="724" loading="lazy" alt="Purple character inspiration boards combining costume, woodland and magical references."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>A visual vocabulary of purple, woodland textures, magic and celestial motifs.</span><span>LONGYI YAN / 11</span></figcaption>
+</figure>
+<!-- 图片 12：申博-作品集2025_23.jpg → assets/images/rubika-23.jpg -->
+<figure class="plate" id="plate-12">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">12 /</span><h3>Character &amp; Story Exploration</h3></div><span class="plate-type">Concept development</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Character &amp; Story Exploration"><img src="assets/images/rubika-23.jpg" width="2048" height="724" loading="lazy" alt="Character reference collage and handwritten character and worldbuilding sketches."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Gathering personality, narrative and visual references into the beginnings of a character.</span><span>LONGYI YAN / 12</span></figcaption>
+</figure>
+<!-- 图片 13：申博-作品集2025_24.jpg → assets/images/rubika-24.jpg -->
+<figure class="plate" id="plate-13">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">13 /</span><h3>An Astral Witch — Character Sheet</h3></div><span class="plate-type">Character design</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge An Astral Witch — Character Sheet"><img src="assets/images/rubika-24.jpg" width="2048" height="724" loading="lazy" alt="A purple-clad witch character with costume details and front and back views."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Costume, expression and front-and-back views bring the witch character into focus.</span><span>LONGYI YAN / 13</span></figcaption>
+</figure>
+<!-- 图片 14：申博-作品集2025_25.jpg → assets/images/rubika-25.jpg -->
+<figure class="plate" id="plate-14">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">14 /</span><h3>Lyra — Research &amp; Form</h3></div><span class="plate-type">Object / Prop research</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Lyra — Research &amp; Form"><img src="assets/images/rubika-25.jpg" width="2048" height="724" loading="lazy" alt="Annotated research pages on lyres with diagrams, references and shape studies."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Research into the lyre’s history, structure and proportions informs a designed object.</span><span>LONGYI YAN / 14</span></figcaption>
+</figure>
+<!-- 图片 15：申博-作品集2025_26.jpg → assets/images/rubika-26.jpg -->
+<figure class="plate" id="plate-15">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">15 /</span><h3>Lyra — Object Design</h3></div><span class="plate-type">Prop design</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Lyra — Object Design"><img src="assets/images/rubika-26.jpg" width="2048" height="724" loading="lazy" alt="Lyre visual references and design sketches alongside a finished object-design presentation."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Developing references and sketches into a resolved musical-object concept.</span><span>LONGYI YAN / 15</span></figcaption>
+</figure>
+<!-- 图片 16：申博-作品集2025_27.jpg → assets/images/rubika-27.jpg -->
+<figure class="plate" id="plate-16">
+ <div class="plate-top"><div class="plate-title"><span class="plate-number">16 /</span><h3>Cupid &amp; Apollo</h3></div><span class="plate-type">Character design</span></div>
+ <button class="plate-open" type="button" aria-label="Enlarge Cupid &amp; Apollo"><img src="assets/images/rubika-27.jpg" width="2048" height="724" loading="lazy" alt="Cupid and Apollo character sheets with coloured concepts, poses and construction sketches."><span class="expand" aria-hidden="true">↗</span></button>
+ <figcaption><span>Two mythological figures explored through costume, silhouette and character studies.</span><span>LONGYI YAN / 16</span></figcaption>
+</figure>
+</section>
+</section>
+<a class="next-project" href="suichu.html"><span><small>NEXT COLLECTION / 03</small><strong>Sui Chu Unique Realm</strong></span><span class="arrow" aria-hidden="true">↗</span></a></main><footer><div><a class="footer-name" href="index.html">Longyi Yan</a><span>Artist/ Multi media designer</span></div><div class="footer-right"><span>© 2026 Longyi Yan</span><a href="#top">Back to top ↑</a></div></footer>
+<!-- 放大查看：自动读取全部作品图片；添加作品时无需修改下方 JavaScript。 -->
+<dialog class="viewer" id="viewer" aria-labelledby="viewer-label">
+ <div class="viewer-bar"><p class="viewer-label" id="viewer-label">Artwork detail</p><div class="viewer-tools"><button type="button" id="zoom" aria-pressed="false">Zoom in +</button><button type="button" id="close" autofocus>Close ✕</button></div></div>
+ <div class="viewer-stage" id="viewer-stage"><img id="viewer-image" alt=""></div>
+ <div class="viewer-bottom"><button type="button" id="previous" aria-label="Previous spread">← Previous</button><span class="viewer-count" id="viewer-count" aria-live="polite"></span><button type="button" id="next" aria-label="Next spread">Next →</button></div>
+</dialog><script>
+const viewer = document.querySelector('#viewer');
+const stage = document.querySelector('#viewer-stage');
+const image = document.querySelector('#viewer-image');
+const zoom = document.querySelector('#zoom');
+const plates = [...document.querySelectorAll('.plate')];
+let active = 0;
+function resetZoom() {
+ stage.classList.remove('is-zoomed');
+ zoom.textContent = 'Zoom in +';
+ zoom.setAttribute('aria-pressed', 'false');
+ stage.scrollTop = 0; stage.scrollLeft = 0;
+}
+function showPlate(index) {
+ active = (index + plates.length) % plates.length;
+ const source = plates[active].querySelector('.plate-open img');
+ image.src = source.getAttribute('src'); image.alt = source.alt;
+ document.querySelector('#viewer-label').textContent = plates[active].querySelector('h3').textContent;
+ document.querySelector('#viewer-count').textContent = `${String(active + 1).padStart(2, '0')} / ${String(plates.length).padStart(2, '0')}`;
+ resetZoom();
+}
+plates.forEach((plate, index) => {
+ plate.querySelector('.plate-open').addEventListener('click', () => {
+  showPlate(index); viewer.showModal(); document.body.classList.add('viewer-open');
+ });
+});
+document.querySelector('#close').addEventListener('click', () => viewer.close());
+viewer.addEventListener('close', () => { document.body.classList.remove('viewer-open'); resetZoom(); });
+document.querySelector('#previous').addEventListener('click', () => showPlate(active - 1));
+document.querySelector('#next').addEventListener('click', () => showPlate(active + 1));
+zoom.addEventListener('click', () => {
+ const expanded = stage.classList.toggle('is-zoomed');
+ zoom.textContent = expanded ? 'Fit to screen −' : 'Zoom in +';
+ zoom.setAttribute('aria-pressed', String(expanded));
+ stage.scrollTop = 0; stage.scrollLeft = 0;
+});
+viewer.addEventListener('keydown', event => {
+ if (event.target.closest('button') && ['ArrowLeft','ArrowRight'].includes(event.key) && !stage.classList.contains('is-zoomed')) {
+  event.preventDefault(); showPlate(active + (event.key === 'ArrowRight' ? 1 : -1));
+ }
+});
+</script></body></html>

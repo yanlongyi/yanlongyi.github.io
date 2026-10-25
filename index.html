@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Longyi Yan — Artist / Multi media designer. Selected fine art, 3D animation, concept art and digital environments.">
+  <meta name="theme-color" content="#eeece6">
+  <title>Longyi Yan — Artist / Multi media designer</title>
+  <style>
+    /* ===== 图片替换位置 =====
+       把照片上传到 assets/images/portrait.jpg，或修改下面的路径。
+       三个作品封面也可自行上传；不上传时会显示预设色块，不影响布局。
+       GitHub 文件名区分大小写；所有路径均相对于本 index.html。
+    */
+    :root {
+      --portrait: url("assets/images/portrait.jpg"); /* 必填：你的首屏照片 */
+      --fineart-cover: url("assets/images/fineart-cover.jpg"); /* 可选：Fine Art 封面 */
+      --rubika-cover: url("assets/images/rubika-cover.jpg"); /* 可选：Rubika 封面 */
+      --suichu-cover: url("assets/images/suichu-cover.jpg"); /* 可选：Sui Chu 封面 */
+      --paper: #eeece6;
+      --ink: #22231f;
+      --line: #c6c5bc;
+      --gutter: clamp(22px, 5vw, 88px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 30px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid #cf5739; outline-offset: 7px; }
+    ::selection { background: #cf5739; color: white; }
+    .skip { position: absolute; top: -100px; left: 20px; z-index: 10; padding: 12px; background: white; color: black; }
+    .skip:focus { top: 20px; }
+    /* 首屏：真正的 HTML 文字叠在照片之上。 */
+    .hero { position: relative; min-height: 760px; min-height: 100svh; display: flex; flex-direction: column; overflow: hidden; color: #fff; background: #53554d; }
+    .hero::before { content: ""; position: absolute; inset: 0; background-image: var(--portrait); background-size: cover; background-position: center 38%; /* 调整 38% 可改变照片上下取景位置 */ }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.03) 35%, rgba(0,0,0,.56)); }
+    .topbar, .hero-content, .hero-bottom { position: relative; z-index: 1; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 30px var(--gutter); }
+    .wordmark { font-size: 13px; font-weight: 700; letter-spacing: .07em; white-space: nowrap; }
+    nav { display: flex; gap: clamp(16px, 2.5vw, 38px); font-size: 12px; }
+    nav a { padding-block: 6px; border-bottom: 1px solid transparent; }
+    nav a:hover, nav a[aria-current="page"] { border-bottom-color: currentColor; }
+    .hero-content { margin-top: auto; padding: 120px var(--gutter) 60px; }
+    .eyebrow { margin: 0 0 24px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 0 0 24px -.055em; font-size: clamp(72px, 13.4vw, 230px); line-height: .9; font-weight: 400; letter-spacing: -.075em; }
+    .subtitle { margin: 0; font-size: clamp(17px, 2.1vw, 30px); font-weight: 400; letter-spacing: -.02em; }
+    .hero-bottom { margin: 0 var(--gutter); padding: 22px 0 26px; border-top: 1px solid rgba(255,255,255,.45); display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 11px; }
+    .scroll-link { display: flex; align-items: center; gap: 22px; padding: 5px 0; }
+    .scroll-link span { font-size: 18px; }
+    main { padding: 0 var(--gutter); }
+    .section-heading { padding: 75px 0 30px; display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--ink); gap: 20px; }
+    .section-heading h2 { margin: 0; font-size: 12px; font-weight: 400; letter-spacing: .09em; text-transform: uppercase; }
+    .section-heading p { margin: 0; font-size: 11px; color: #676960; }
+    /* 每个 block 是一个完整链接，整块可点击，无需 JavaScript。 */
+    .project { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(28px, 6vw, 110px); padding: 46px 0; border-bottom: 1px solid var(--line); }
+    .project-copy { display: flex; flex-direction: column; align-items: flex-start; padding: 14px 0; }
+    .project-meta { display: flex; gap: 22px; width: 100%; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+    .project-meta span:last-child { color: #676960; }
+    .project h3 { margin: 48px 0 22px; max-width: 600px; font-size: clamp(38px, 4.6vw, 76px); font-weight: 400; line-height: 1.02; letter-spacing: -.055em; }
+    .description { max-width: 400px; margin: 0 0 32px; font-size: 14px; line-height: 1.8; color: #61635a; }
+    .open { margin-top: auto; display: inline-flex; align-items: center; gap: 24px; padding: 10px 0; font-size: 11px; border-bottom: 1px solid var(--ink); }
+    .arrow { display: inline-block; transition: transform .25s ease; font-size: 20px; line-height: 1; }
+    .project:hover .arrow, .cv-block:hover .arrow { transform: translate(4px, -4px); }
+    .project-visual { position: relative; min-height: 360px; aspect-ratio: 1.23; overflow: hidden; background-color: #9e4437; }
+    .project-visual::before { content: ""; position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .65s ease; }
+    .project:hover .project-visual::before { transform: scale(1.035); }
+    .fineart .project-visual::before { background-image: var(--fineart-cover); }
+    .rubika .project-visual { background-color: #333a40; }
+    .rubika .project-visual::before { background-image: var(--rubika-cover); }
+    .suichu .project-visual { background-color: #7b806a; }
+    .suichu .project-visual::before { background-image: var(--suichu-cover); }
+    .visual-label { position: absolute; bottom: 20px; left: 22px; color: white; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; text-shadow: 0 1px 5px #0008; }
+    .cv-block { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(28px, 6vw, 110px); padding: 54px 0 64px; border-bottom: 1px solid var(--ink); }
+    .cv-block .project-meta { margin-bottom: 36px; }
+    .cv-block h3 { margin: 0; font-size: clamp(40px, 5vw, 80px); font-weight: 400; letter-spacing: -.055em; line-height: 1; }
+    .cv-right { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; }
+    footer { padding: 46px var(--gutter) 30px; display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; font-size: 11px; }
+    .footer-name { display: block; font-size: 18px; letter-spacing: -.04em; margin-bottom: 10px; }
+    .footer-right { display: flex; gap: 28px; align-items: center; }
+    .footer-right a { border-bottom: 1px solid var(--line); padding-bottom: 3px; }
+    @media (min-width: 1800px) { main { max-width: 1800px; margin: auto; } }
+    @media (max-width: 760px) {
+      .hero { min-height: 720px; min-height: 100svh; }
+      .topbar { align-items: flex-start; flex-direction: column; gap: 22px; padding-top: 24px; }
+      nav { gap: 22px; flex-wrap: wrap; font-size: 11px; }
+      .hero-content { padding-top: 90px; padding-bottom: 42px; }
+      h1 { font-size: clamp(64px, 16vw, 115px); }
+      .hero-bottom { font-size: 10px; }
+      .section-heading { padding-top: 50px; }
+      .project { grid-template-columns: 1fr; gap: 24px; padding: 30px 0; }
+      .project-copy { padding: 0; }
+      .project h3 { margin: 28px 0 16px; }
+      .description { max-width: 100%; margin-bottom: 20px; }
+      .project-visual { min-height: 0; aspect-ratio: 1.15; }
+      .cv-block { grid-template-columns: 1fr; gap: 25px; padding: 36px 0; }
+      .cv-block .project-meta { margin-bottom: 26px; }
+      footer { align-items: flex-start; flex-direction: column; padding-top: 30px; }
+      .footer-right { width: 100%; justify-content: space-between; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#selected-work">Skip to selected work</a>
+  <header class="hero" id="top">
+    <div class="topbar">
+      <a class="wordmark" href="index.html" aria-label="Longyi Yan home">LONGYI YAN</a>
+      <nav aria-label="Main navigation">
+        <a href="#selected-work">Work</a>
+        <a href="fineart.html">Fine Art</a>
+        <a href="rubika.html">Rubika</a>
+        <a href="suichu.html">Sui Chu</a>
+        <a href="cv.html">CV</a>
+      </nav>
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow">Art / Images / Imagined worlds</p>
+      <!-- 姓名和小标题：直接修改以下文字即可。 -->
+      <h1>Longyi Yan</h1>
+      <p class="subtitle">Artist/ Multi media designer</p>
+    </div>
+    <div class="hero-bottom">
+      <span>SELECTED WORKS / 2026</span>
+      <a class="scroll-link" href="#selected-work">Explore my work <span aria-hidden="true">↓</span></a>
+    </div>
+  </header>
+
+  <main id="selected-work">
+    <div class="section-heading"><h2>Selected work &amp; background</h2><p>01 — 04</p></div>
+
+    <!-- BLOCK 01：整块跳转 fineart.html；介绍文字可直接编辑。 -->
+    <a class="project fineart" href="fineart.html" aria-labelledby="fineart-title">
+      <div class="project-copy">
+        <div class="project-meta"><span>01 / Fine Art</span><span>Painting &amp; printmaking</span></div>
+        <h3 id="fineart-title">Traces of<br>everyday life.</h3>
+        <p class="description">Paintings, prints and sketches exploring childhood, family and the places we remember. A collection of personal stories told through colour, texture and mark-making.</p>
+        <span class="open">Explore Fine Art <span class="arrow" aria-hidden="true">↗</span></span>
+      </div>
+      <!-- 封面图片位置：CSS 中 --fineart-cover，默认 assets/images/fineart-cover.jpg -->
+      <div class="project-visual" aria-hidden="true"><span class="visual-label">Fine Art / Selected works</span></div>
+    </a>
+
+    <!-- BLOCK 02：整块跳转 rubika.html。 -->
+    <a class="project rubika" href="rubika.html" aria-labelledby="rubika-title">
+      <div class="project-copy">
+        <div class="project-meta"><span>02 / Rubika Exchange</span><span>2024 — 2025</span></div>
+        <h3 id="rubika-title">Imagining<br>other worlds.</h3>
+        <p class="description">3D animation, environment design and character concepts developed during my exchange at Rubika in France. From a tavern interior to a Viking town, drawing becomes a way to build worlds.</p>
+        <span class="open">Explore Rubika <span class="arrow" aria-hidden="true">↗</span></span>
+      </div>
+      <!-- 封面图片位置：CSS 中 --rubika-cover，默认 assets/images/rubika-cover.jpg -->
+      <div class="project-visual" aria-hidden="true"><span class="visual-label">Rubika / 3D &amp; concept art</span></div>
+    </a>
+
+    <!-- BLOCK 03：整块跳转 suichu.html。 -->
+    <a class="project suichu" href="suichu.html" aria-labelledby="suichu-title">
+      <div class="project-copy">
+        <div class="project-meta"><span>03 / Sui Chu Unique Realm</span><span>2025 — 2026</span></div>
+        <h3 id="suichu-title">A garden,<br>reimagined.</h3>
+        <p class="description">A digital regeneration of the Qianlong Garden, translated into a walkable 3D environment. Terrain, rockery, lighting and spatial storytelling bring a historic garden into an imagined realm.</p>
+        <span class="open">Explore Sui Chu <span class="arrow" aria-hidden="true">↗</span></span>
+      </div>
+      <!-- 封面图片位置：CSS 中 --suichu-cover，默认 assets/images/suichu-cover.jpg -->
+      <div class="project-visual" aria-hidden="true"><span class="visual-label">Sui Chu / Environment &amp; game level art</span></div>
+    </a>
+
+    <!-- BLOCK 04：整块跳转 cv.html。 -->
+    <a class="cv-block" href="cv.html" aria-labelledby="cv-title">
+      <div><div class="project-meta"><span>04 / Background</span><span>Curriculum vitae</span></div><h3 id="cv-title">Beyond the work.</h3></div>
+      <div class="cv-right"><p class="description">My background in fine art, research and digital creation. Education, selected awards, teaching experience, and the tools behind my practice.</p><span class="open">View CV <span class="arrow" aria-hidden="true">↗</span></span></div>
+    </a>
+  </main>
+
+  <footer>
+    <div><a class="footer-name" href="#top">Longyi Yan</a><span>Artist/ Multi media designer</span></div>
+    <div class="footer-right"><span>© 2026 Longyi Yan</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+</body>
+</html>

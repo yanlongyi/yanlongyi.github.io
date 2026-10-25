@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Fine Art by Longyi Yan — printmaking, painting and memories of everyday life.">
+<title>Fine Art — Longyi Yan</title>
+<style>
+:root{--paper:#eeece6;--ink:#22231f;--line:#c6c5bc;--muted:#61635a;--gutter:clamp(22px,5vw,88px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}a:focus-visible,button:focus-visible{outline:3px solid #cf5739;outline-offset:5px}::selection{background:#cf5739;color:white}.skip{position:absolute;top:-100px;left:20px;padding:12px;background:white;z-index:10}.skip:focus{top:20px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:30px var(--gutter)}.wordmark{font-size:13px;font-weight:700;letter-spacing:.07em;white-space:nowrap}nav{display:flex;gap:clamp(16px,2.5vw,38px);font-size:12px}nav a{padding-block:6px;border-bottom:1px solid transparent}nav a:hover,nav a[aria-current=page]{border-bottom-color:currentColor}main{padding:0 var(--gutter)}
+.page-hero{padding:95px 0 48px;border-bottom:1px solid var(--ink)}.eyebrow{margin:0 0 28px;font-size:11px;letter-spacing:.14em;text-transform:uppercase}h1{margin:0 0 26px -.055em;font-size:clamp(72px,13.4vw,230px);line-height:.9;font-weight:400;letter-spacing:-.075em}.subtitle{margin:0;font-size:clamp(17px,2.1vw,30px);letter-spacing:-.02em}.hero-bottom{margin-top:48px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px}.intro{max-width:530px;margin:0;color:var(--muted);font-size:14px;line-height:1.85}.edition{font-size:10px;letter-spacing:.06em;white-space:nowrap}.gallery-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:28px 0}.gallery-heading h2{font-size:11px;font-weight:400;letter-spacing:.09em;text-transform:uppercase;margin:0}.gallery-heading p{font-size:11px;color:var(--muted);margin:0}
+/* 小图索引：帮助快速选择作品。主展区始终完整展示原始比例。 */
+.plate-index{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;margin:0 0 72px}.plate-index a{display:block}.plate-index img{display:block;width:100%;height:auto;opacity:.75;transition:opacity .2s,transform .2s}.plate-index a:hover img{opacity:1;transform:translateY(-3px)}.plate-index span{display:block;margin-top:9px;font-size:10px;color:var(--muted)}
+.plate{margin:0 0 72px;scroll-margin-top:30px}.plate-top{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:20px}.plate-title{display:flex;align-items:baseline;gap:24px}.plate-number{font-size:10px;color:var(--muted)}h3{margin:0;font-size:clamp(23px,2.6vw,40px);font-weight:400;line-height:1.1;letter-spacing:-.04em}.plate-type{font-size:10px;color:var(--muted);text-align:right}.plate-open{display:block;width:100%;padding:0;border:0;background:white;cursor:zoom-in;position:relative}.plate-open img{display:block;width:100%;height:auto}.expand{position:absolute;right:14px;bottom:14px;display:grid;place-items:center;width:34px;height:34px;background:rgba(238,236,230,.94);color:var(--ink);font-size:18px;opacity:0;transition:opacity .2s}.plate-open:hover .expand,.plate-open:focus-visible .expand{opacity:1}.plate figcaption{display:flex;justify-content:space-between;gap:24px;padding:15px 0 20px;border-bottom:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.6}.plate figcaption span:first-child{max-width:650px}.plate figcaption span:last-child{white-space:nowrap}
+.next-project{display:flex;justify-content:space-between;align-items:center;gap:28px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:36px 0}.next-project small{display:block;font-size:10px;letter-spacing:.08em;margin-bottom:16px;color:var(--muted)}.next-project strong{font-weight:400;font-size:clamp(30px,4vw,60px);letter-spacing:-.05em}.next-project .arrow{font-size:40px;transition:transform .2s}.next-project:hover .arrow{transform:translate(4px,-4px)}footer{padding:46px var(--gutter) 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;font-size:11px}.footer-name{display:block;font-size:18px;letter-spacing:-.04em;margin-bottom:10px}.footer-right{display:flex;gap:28px;align-items:center}.footer-right a{border-bottom:1px solid var(--line);padding-bottom:3px}
+/* 原生 dialog：Esc 关闭，方向键切换，放大后可滚动查看细节。 */
+.viewer{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:var(--paper);color:var(--ink)}.viewer::backdrop{background:#222c}.viewer[open]{display:flex;flex-direction:column}.viewer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 24px;border-bottom:1px solid var(--line);flex-shrink:0}.viewer-label{margin:0;font-size:12px}.viewer-tools{display:flex;gap:10px}.viewer button{background:transparent;border:1px solid var(--line);padding:10px 14px;cursor:pointer;font-size:12px}.viewer button:hover{background:#dedcd4}.viewer-stage{flex:1;min-height:0;overflow:auto;display:flex;align-items:center;justify-content:center;padding:24px}.viewer-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}.viewer-stage.is-zoomed{display:block}.viewer-stage.is-zoomed img{max-width:none;max-height:none;width:2048px;height:auto}.viewer-bottom{padding:14px 24px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-shrink:0}.viewer-count{font-size:11px;color:var(--muted)}body.viewer-open{overflow:hidden}
+@media(min-width:1800px){main{max-width:1800px;margin:auto}}
+@media(max-width:760px){.topbar{align-items:flex-start;flex-direction:column;gap:22px;padding-top:24px}nav{gap:22px;flex-wrap:wrap;font-size:11px}.page-hero{padding-top:65px;padding-bottom:32px}h1{font-size:clamp(64px,16vw,115px)}.hero-bottom{align-items:flex-start;flex-direction:column;gap:24px;margin-top:32px}.plate-index{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 12px;margin-bottom:48px}.plate{margin-bottom:44px}.plate-top{gap:12px}.plate-title{gap:12px}.plate-type{max-width:100px;line-height:1.6}.plate figcaption{font-size:10px;gap:12px}.expand{opacity:1;width:28px;height:28px;right:8px;bottom:8px}.gallery-heading p{font-size:10px}.viewer-bar{align-items:flex-start;padding:16px;gap:12px}.viewer-label{font-size:11px;line-height:1.6}.viewer-tools{gap:6px}.viewer button{padding:10px;font-size:11px}.viewer-stage{padding:12px}.viewer-bottom{padding:12px 16px}footer{align-items:flex-start;flex-direction:column;padding-top:30px}.footer-right{width:100%;justify-content:space-between}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#gallery">Skip to artwork</a>
+<header class="topbar" id="top">
+ <a class="wordmark" href="index.html">LONGYI YAN</a>
+ <nav aria-label="Main navigation">
+  <a href="index.html#selected-work">Work</a><a href="fineart.html" aria-current="page">Fine Art</a><a href="rubika.html">Rubika</a><a href="suichu.html">Sui Chu</a><a href="cv.html">CV</a>
+ </nav>
+</header>
+<main>
+ <div class="page-hero">
+  <p class="eyebrow">Selected works / Fine Art</p>
+  <h1>Fine Art</h1>
+  <p class="subtitle">Traces of everyday life.</p>
+  <div class="hero-bottom">
+   <p class="intro">An exploration of memory, belonging and the places we carry with us. Through printmaking, painting and drawing, everyday scenes become reflections on childhood, family and loss.</p>
+   <span class="edition">SIX PORTFOLIO SPREADS / 01 — 06</span>
+  </div>
+ </div>
+ <section id="gallery" aria-labelledby="gallery-title">
+  <div class="gallery-heading"><h2 id="gallery-title">The collection</h2><p>Click a spread to explore the details ↗</p></div>
+  <div class="plate-index" role="navigation" aria-label="Artwork index">
+   <a href="#plate-01"><img src="assets/images/fineart-03.jpg" width="2048" height="724" alt=""><span>01 / Yard</span></a>
+   <a href="#plate-02"><img src="assets/images/fineart-04.jpg" width="2048" height="724" alt=""><span>02 / Field &amp; Tree</span></a>
+   <a href="#plate-03"><img src="assets/images/fineart-05.jpg" width="2048" height="724" alt=""><span>03 / Swim &amp; Memory</span></a>
+   <a href="#plate-04"><img src="assets/images/fineart-06.jpg" width="2048" height="724" alt=""><span>04 / Scenes of Life</span></a>
+   <a href="#plate-05"><img src="assets/images/fineart-07.jpg" width="2048" height="724" alt=""><span>05 / Station of Lover</span></a>
+   <a href="#plate-06"><img src="assets/images/fineart-08.jpg" width="2048" height="724" alt=""><span>06 / Childhood</span></a>
+  </div>
+  <!-- 图片 01：原文件 申博-作品集2025_03.jpg → assets/images/fineart-03.jpg -->
+  <figure class="plate" id="plate-01">
+   <div class="plate-top"><div class="plate-title"><span class="plate-number">01 /</span><h3>Leftover Dreams — Yard</h3></div><span class="plate-type">Printmaking / Memory</span></div>
+   <button class="plate-open" type="button" aria-label="Enlarge Leftover Dreams — Yard"><img src="assets/images/fineart-03.jpg" width="2048" height="724" alt="Leftover Dreams introduction and Yard: a black-and-white print of rural life within stone walls."><span class="expand" aria-hidden="true">↗</span></button>
+   <figcaption><span>A return to the village: quiet courtyards, familiar figures and the rhythm of rural life.</span><span>LONGYI YAN / 01</span></figcaption>
+  </figure>
+  <!-- 图片 02：原文件 申博-作品集2025_04.jpg → assets/images/fineart-04.jpg -->
+  <figure class="plate" id="plate-02">
+   <div class="plate-top"><div class="plate-title"><span class="plate-number">02 /</span><h3>Field &amp; Tree</h3></div><span class="plate-type">Printmaking / Landscape</span></div>
+   <button class="plate-open" type="button" aria-label="Enlarge Field and Tree"><img src="assets/images/fineart-04.jpg" width="2048" height="724" loading="lazy" alt="Field and Tree: two detailed monochrome prints depicting an imagined landscape and a village tree."><span class="expand" aria-hidden="true">↗</span></button>
+   <figcaption><span>Paths, fields and the village tree become landmarks in a landscape of recollection.</span><span>LONGYI YAN / 02</span></figcaption>
+  </figure>
+  <!-- 图片 03：原文件 申博-作品集2025_05.jpg → assets/images/fineart-05.jpg -->
+  <figure class="plate" id="plate-03">
+   <div class="plate-top"><div class="plate-title"><span class="plate-number">03 /</span><h3>Swim &amp; Station of the Departed</h3></div><span class="plate-type">Printmaking / Drawing</span></div>
+   <button class="plate-open" type="button" aria-label="Enlarge Swim and Station of the Departed"><img src="assets/images/fineart-05.jpg" width="2048" height="724" loading="lazy" alt="Swim print on the left and Station of the Departed on the right, with a monochrome family scene lit by a lamp."><span class="expand" aria-hidden="true">↗</span></button>
+   <figcaption><span>From childhood waters to a room lit by a lamp: images of presence, absence and home.</span><span>LONGYI YAN / 03</span></figcaption>
+  </figure>
+  <!-- 图片 04：原文件 申博-作品集2025_06.jpg → assets/images/fineart-06.jpg -->
+  <figure class="plate" id="plate-04">
+   <div class="plate-top"><div class="plate-title"><span class="plate-number">04 /</span><h3>Scenes of Life</h3></div><span class="plate-type">Painting / Drawing</span></div>
+   <button class="plate-open" type="button" aria-label="Enlarge Scenes of Life"><img src="assets/images/fineart-06.jpg" width="2048" height="724" loading="lazy" alt="A colourful painting of children beside a sofa and a monochrome architectural drawing."><span class="expand" aria-hidden="true">↗</span></button>
+   <figcaption><span>Objects and architecture hold the traces of people and the lives unfolding around them.</span><span>LONGYI YAN / 04</span></figcaption>
+  </figure>
+  <!-- 图片 05：原文件 申博-作品集2025_07.jpg → assets/images/fineart-07.jpg -->
+  <figure class="plate" id="plate-05">
+   <div class="plate-top"><div class="plate-title"><span class="plate-number">05 /</span><h3>Station of Lover</h3></div><span class="plate-type">Mixed media / Emotion</span></div>
+   <button class="plate-open" type="button" aria-label="Enlarge Station of Lover"><img src="assets/images/fineart-07.jpg" width="2048" height="724" loading="lazy" alt="Station of Lover portfolio spread with the vivid red mixed-media work Lonely Alcoholic."><span class="expand" aria-hidden="true">↗</span></button>
+   <figcaption><span>Fragments, saturated red and material gestures give form to an intimate emotional world.</span><span>LONGYI YAN / 05</span></figcaption>
+  </figure>
+  <!-- 图片 06：原文件 申博-作品集2025_08.jpg → assets/images/fineart-08.jpg -->
+  <figure class="plate" id="plate-06">
+   <div class="plate-top"><div class="plate-title"><span class="plate-number">06 /</span><h3>Station of Childhood</h3></div><span class="plate-type">Printmaking / Childhood</span></div>
+   <button class="plate-open" type="button" aria-label="Enlarge Station of Childhood"><img src="assets/images/fineart-08.jpg" width="2048" height="724" loading="lazy" alt="Station of Childhood spread with expressive monochrome figures, branching forms and a small figure in red."><span class="expand" aria-hidden="true">↗</span></button>
+   <figcaption><span>Expressive lines and imagined encounters revisit the wonder and vulnerability of childhood.</span><span>LONGYI YAN / 06</span></figcaption>
+  </figure>
+ </section>
+ <a class="next-project" href="rubika.html"><span><small>NEXT COLLECTION / 02</small><strong>Rubika Exchange</strong></span><span class="arrow" aria-hidden="true">↗</span></a>
+</main>
+<footer><div><a class="footer-name" href="index.html">Longyi Yan</a><span>Artist/ Multi media designer</span></div><div class="footer-right"><span>© 2026 Longyi Yan</span><a href="#top">Back to top ↑</a></div></footer>
+<!-- 放大查看：图片自动从上方六个作品按钮读取，无需重复填写路径。 -->
+<dialog class="viewer" id="viewer" aria-labelledby="viewer-label">
+ <div class="viewer-bar"><p class="viewer-label" id="viewer-label">Artwork detail</p><div class="viewer-tools"><button type="button" id="zoom" aria-pressed="false">Zoom in +</button><button type="button" id="close" autofocus>Close ✕</button></div></div>
+ <div class="viewer-stage" id="viewer-stage"><img id="viewer-image" alt=""></div>
+ <div class="viewer-bottom"><button type="button" id="previous" aria-label="Previous spread">← Previous</button><span class="viewer-count" id="viewer-count" aria-live="polite"></span><button type="button" id="next" aria-label="Next spread">Next →</button></div>
+</dialog>
+<script>
+const viewer = document.querySelector('#viewer');
+const stage = document.querySelector('#viewer-stage');
+const image = document.querySelector('#viewer-image');
+const zoom = document.querySelector('#zoom');
+const plates = [...document.querySelectorAll('.plate')];
+let active = 0;
+function resetZoom() {
+ stage.classList.remove('is-zoomed');
+ zoom.textContent = 'Zoom in +';
+ zoom.setAttribute('aria-pressed', 'false');
+ stage.scrollTop = 0; stage.scrollLeft = 0;
+}
+function showPlate(index) {
+ active = (index + plates.length) % plates.length;
+ const source = plates[active].querySelector('.plate-open img');
+ image.src = source.getAttribute('src'); image.alt = source.alt;
+ document.querySelector('#viewer-label').textContent = plates[active].querySelector('h3').textContent;
+ document.querySelector('#viewer-count').textContent = `${String(active + 1).padStart(2, '0')} / ${String(plates.length).padStart(2, '0')}`;
+ resetZoom();
+}
+plates.forEach((plate, index) => {
+ plate.querySelector('.plate-open').addEventListener('click', () => {
+  showPlate(index); viewer.showModal(); document.body.classList.add('viewer-open');
+ });
+});
+document.querySelector('#close').addEventListener('click', () => viewer.close());
+viewer.addEventListener('close', () => { document.body.classList.remove('viewer-open'); resetZoom(); });
+document.querySelector('#previous').addEventListener('click', () => showPlate(active - 1));
+document.querySelector('#next').addEventListener('click', () => showPlate(active + 1));
+zoom.addEventListener('click', () => {
+ const expanded = stage.classList.toggle('is-zoomed');
+ zoom.textContent = expanded ? 'Fit to screen −' : 'Zoom in +';
+ zoom.setAttribute('aria-pressed', String(expanded));
+ stage.scrollTop = 0; stage.scrollLeft = 0;
+});
+viewer.addEventListener('keydown', event => {
+ if (event.target.closest('button') && ['ArrowLeft','ArrowRight'].includes(event.key) && !stage.classList.contains('is-zoomed')) {
+  event.preventDefault(); showPlate(active + (event.key === 'ArrowRight' ? 1 : -1));
+ }
+});
+</script>
+</body>
+</html>

@@ -33,7 +33,20 @@
     /* 首屏：真正的 HTML 文字叠在照片之上。 */
     .hero { position: relative; min-height: 760px; min-height: 100svh; display: flex; flex-direction: column; overflow: hidden; color: #fff; background: #53554d; }
     .hero::before { content: ""; position: absolute; inset: 0; background-image: var(--portrait); background-size: cover; background-position: center 38%; /* 调整 38% 可改变照片上下取景位置 */ }
-    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.03) 35%, rgba(0,0,0,.56)); }
+   .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0) 25%,
+    rgba(238, 236, 230, 0.16) 40%,
+    rgba(238, 236, 230, 0.72) 62%,
+    rgba(238, 236, 230, 0.96) 82%,
+    var(--paper) 100%
+  );
+}
     .topbar, .hero-content, .hero-bottom { position: relative; z-index: 1; }
     .topbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 30px var(--gutter); }
     .wordmark { font-size: 13px; font-weight: 700; letter-spacing: .07em; white-space: nowrap; }
@@ -86,6 +99,18 @@
       .hero-content { padding-top: 90px; padding-bottom: 42px; }
       h1 { font-size: clamp(64px, 16vw, 115px); }
       .hero-bottom { font-size: 10px; }
+      .hero {
+  background: var(--paper);
+}
+
+.hero-content,
+.hero-bottom {
+  color: var(--ink);
+}
+
+.hero-bottom {
+  border-top: 1px solid var(--line);
+}
       .section-heading { padding-top: 50px; }
       .project { grid-template-columns: 1fr; gap: 24px; padding: 30px 0; }
       .project-copy { padding: 0; }
